@@ -1,3 +1,4 @@
+import { Utils } from "src/shared/utils/utils";
 import { Entity } from "../shared/entity";
 
 //Formato de entrada dos dados
@@ -18,5 +19,21 @@ export class User extends Entity{
         this.validate();
     }
 
-    public static create({email , password}: UserCreateDto):User {}
+    public static create({email , password}: UserCreateDto):User {
+        const id = Utils.GenerateUUID();
+        const createAt = new Date();
+        const updateAt = new Date();
+
+        return new User(id ,email,password, createAt , updateAt);
+    }
+
+    protected validate(): void {};
+
+    public getEmail(): string{
+        return this.email;
+    }
+    public getPassword(): string{
+        return this.password;
+    }
+    
 }
