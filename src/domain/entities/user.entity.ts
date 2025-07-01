@@ -1,5 +1,6 @@
 import { Utils } from "src/shared/utils/utils";
-import { Entity } from "../shared/entity";
+import { Entity } from "../shared/entites/user-entity";
+import { UserValidatorFactory } from "../factories/user-validator.factory";
 
 //Formato de entrada dos dados
 export type UserCreateDto = {
@@ -28,7 +29,9 @@ export class User extends Entity {
         return new User(id, email, hasedPassword, createAt, updateAt);
     }
 
-    protected validate(): void { };
+    protected validate(): void { 
+        UserValidatorFactory.create().validate(this)
+    };
 
     public getEmail(): string {
         return this.email;

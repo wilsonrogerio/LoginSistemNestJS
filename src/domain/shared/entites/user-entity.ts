@@ -13,13 +13,13 @@ export abstract class Entity {
    protected abstract validate(): void;
 
    //Get e Set
-   protected getId() : string{
+   public getId() : string{
     return this.id
    }
-   protected getCreateAt() : Date{
+   public getCreateAt() : Date{
     return this.createAt
    }
-   protected getUpdateAt() : Date{
+   public getUpdateAt() : Date{
     return this.updateAt
    }
 
